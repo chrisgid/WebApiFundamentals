@@ -9,6 +9,7 @@ using Autofac;
 using Autofac.Integration.WebApi;
 using AutoMapper;
 using TheCodeCamp.Data;
+using TheCodeCamp.Data.Mapping;
 
 namespace TheCodeCamp
 {
@@ -30,7 +31,9 @@ namespace TheCodeCamp
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.AddProfile(new CampMappingProfile());
+                cfg.AddProfile<CampMappingProfile>();
+                cfg.AddProfile<SpeakerMappingProfile>();
+                cfg.AddProfile<TalkMappingProfile>();
             });
 
             bldr.RegisterInstance(config.CreateMapper())

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using TheCodeCamp.Models;
 
-namespace TheCodeCamp.Data
+namespace TheCodeCamp.Data.Mapping
 {
     public class CampMappingProfile : Profile
     {

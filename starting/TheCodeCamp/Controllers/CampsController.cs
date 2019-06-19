@@ -22,12 +22,12 @@ namespace TheCodeCamp.Controllers
             _mapper = mapper;
         }
 
-        [Route()]
-        public async Task<IHttpActionResult> Get()
+        [Route]
+        public async Task<IHttpActionResult> Get(bool includeTalks = false)
         {
             try
             {
-                var result = await _campRepository.GetAllCampsAsync();
+                var result = await _campRepository.GetAllCampsAsync(includeTalks);
 
                 return Ok(_mapper.Map<IEnumerable<CampModel>>(result));
             }
@@ -39,11 +39,11 @@ namespace TheCodeCamp.Controllers
         }
 
         [Route("{moniker}")]
-        public async Task<IHttpActionResult> Get(string moniker)
+        public async Task<IHttpActionResult> Get(string moniker, bool includeTalks = false)
         {
             try
             {
-                var result = await _campRepository.GetCampAsync(moniker);
+                var result = await _campRepository.GetCampAsync(moniker, includeTalks);
 
                 if (result == null) return NotFound();
 
